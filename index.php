@@ -329,7 +329,7 @@ class TimeAllUsersReportModel extends TimeRangesModel
 	protected function make_data($routes)
 	{	
 	$SQL = "SELECT					
-					SEC_TO_TIME(sum(TIME_TO_SEC(`ct`.`dateto`) - TIME_TO_SEC(`ct`.`datefrom`))) `time`,
+					SEC_TO_TIME(sum(unix_timestamp(`ct`.`dateto`) - unix_timestamp(`ct`.`datefrom`))) `time`,
 					CONCAT(`family`,' ',`name`,' ',`second_name`) `fio`
 				FROM
 					`ctrl_timeranges` `ct`
@@ -358,7 +358,7 @@ class TimeRangesReportModel extends TimeRangesModel
 					`ct`.`id` `id`,
 					`ct`.`user_id` `user_id`,
 					DATE_FORMAT(`ct`.`datefrom`,'%d.%m.%Y') `date`,
-					SEC_TO_TIME(TIME_TO_SEC(`ct`.`dateto`) - TIME_TO_SEC(`ct`.`datefrom`)) `time`,
+					SEC_TO_TIME(unix_timestamp(`ct`.`dateto`) - unix_timestamp(`ct`.`datefrom`)) `time`,
 					`task`.`title` `task_title`,
 					`prj`.`title` `project_title`,
 					CONCAT(`family`,' ',`name`,' ',`second_name`) `fio`,
@@ -398,7 +398,7 @@ class TimeUserReportModel extends TimeRangesModel
 	}
 	
 	$SQL = "SELECT					
-					SEC_TO_TIME(TIME_TO_SEC(`ct`.`dateto`) - TIME_TO_SEC(`ct`.`datefrom`)) `time`,
+					SEC_TO_TIME(unix_timestamp(`ct`.`dateto`) - unix_timestamp(`ct`.`datefrom`)) `time`,
 					`task`.`title` `task_title`,
 					`prj`.`title` `project_title`,
 					CONCAT(`family`,' ',`name`,' ',`second_name`) `fio`
