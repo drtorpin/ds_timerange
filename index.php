@@ -207,7 +207,7 @@ class TimeRangesModel extends Model {
 		}		
 		$this->error[$index] = $value;
 	}
-	protected function make_data()
+	protected function make_data($routes)
 	{
 		return false;
 	}
