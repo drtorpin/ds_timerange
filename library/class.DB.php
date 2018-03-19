@@ -114,10 +114,10 @@ class DB{
 	/** подключение к базе */
 	private function connect() {
 		$_ = &$this;
-		$host = '10.2.0.10:3306';
-		$dbname = 'satro_paladin_dev_test';
-		$user = 'spcom';
-		$pwd = 'hG3$jhdNbe7%os';
+		$host = '127.0.0.1';
+		$dbname = 'ds';
+		$user = 'root';
+		$pwd = '';
 		try {
 			$dbh = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $user, $pwd);
 			$dbh->exec("SET NAMES utf8");
